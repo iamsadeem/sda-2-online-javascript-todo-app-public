@@ -2,9 +2,9 @@
 
 Create a simple application to let users add/remove/edit tasks.
 Tasks should have: title, deadline, status
-![task-list](todo-app/task-list.png)
-![add-task](todo-app/add-task.png)
-![edit-task](todo-app/edit-task.png)
+![task-list](task_list.png)
+![add-task](add_task.png)
+![edit-task](edit_task.png)
 
 ## Requirements
 * title should be unique
