@@ -14,11 +14,7 @@ In this level, the application includes the following features:
    - Render the list of todos on the screen.
    - Each todo item should display a checkbox and the task description.
 
-3. Completing a Todo:
-   - When a checkbox is clicked, mark the corresponding todo item as complete.
-   - Visually indicate the completion status of each todo item.
-
-4. Deleting a Todo:
+3. Deleting a Todo:
    - Implement a "Delete" button next to each todo item.
    - When the button is clicked, remove the corresponding todo item from the list.
 
@@ -32,11 +28,7 @@ In addition to the basic requirements, the application enhances its functionalit
 
 2. Todo Counter:
    - Include a counter that displays the total number of todo items.
-   - Display the number of completed items as well.
 
-3. Filtering Todo List:
-   - Add the ability to filter the todo list by completed and active tasks.
-   - Use buttons or a dropdown menu to switch between the filters.
 
 ## Level 3: Todo App Bonus Requirements (Optional)
 
