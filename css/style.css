@@ -1,0 +1,123 @@
+*,
+*::before,
+*::after{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    font-family: "Lora", serif;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-style: normal;   
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+}
+
+.container{
+    width: 500px;
+    height: 550px;
+    padding: 30px;
+    border: 1px solid #fff;
+    border-radius: 10px;
+    background-color: rgba(36, 47, 56, 0.5) ;
+}
+
+.container h1{
+    color: #fff;
+    text-align: left;
+    margin-bottom: 20px;
+}
+
+.input-container{
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 25px;
+}
+
+.todo-input{
+    flex:1;
+    outline: none;
+    padding: 10px 10px 10px 20px;    
+    border-radius: 50px;  
+    border: 0;  
+    background-color: rgba(251, 253, 255, 0.882);
+    font-size: inherit;
+    margin-right: 20px;
+}
+
+.todo-input:hover{
+    opacity: 0.9;
+}
+
+.add-button{
+    color: rgba(255, 255, 255, 0.955);
+    border:none;
+    outline: none;
+    background:rgba(255, 255, 255, 0.622);
+    font-size: 35px;
+    cursor: pointer;
+    border-radius: 40px;
+    width: 40px;
+    height: 40px;
+}
+
+.add-button:hover{
+    color: rgba(158, 211, 178, 0.603);
+    background:rgba(65, 65, 65, 0.601);
+}
+
+.empty-image{
+    width: 200px;
+    height: 200px;
+    margin: 80px auto 0;
+    display: block;
+}
+
+.quote-container .text{
+    position: relative;
+    color: #fff;
+    font-size: 20px;
+    font-weight: 200; 
+    border-right: 2px solid rgba(255, 255, 255, 0.75);
+    margin: 0 auto;
+    margin-top: 40px;
+    width: 100%;    
+    text-align: center; 
+    white-space: nowrap;
+    overflow: hidden;
+    width: 20em;
+    transform: translateY(-50%);
+}
+
+.anim-typewriter{
+    animation: typewriter 5s steps(48) 2s infinite,
+    blinkTextCurser 500ms steps(48) infinite;
+}
+
+@keyframes typewriter{
+    0% {
+        width: 0;
+    }
+    50% {
+        width: 20em;
+    }
+    100% {
+        width: 20em;
+    }
+}
+
+@keyframes blinkTextCurser{
+    from{
+        border-right-color: rgba(255, 255, 255, 0.75);
+    }
+    to {
+        border-right-color: transparent;
+    }
+}

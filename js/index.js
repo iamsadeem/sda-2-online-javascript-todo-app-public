@@ -1,0 +1,59 @@
+const input = document.querySelector("input");
+const addButton = document.querySelector(".add-button");
+const todosHtml = document.querySelector(".todos");
+const emptyImage = document.querySelector(".empty-image");
+const quote = document.querySelector(".quote-container");
+
+let todosJson = JSON.parse(localStorage.getItem("todos"))||[]
+
+function getTodoHtml(todo, index) {
+    let checked = todo.status === "completed" ? "checked" : "";
+    return `
+    <li class="todo">
+        <label for="${index}">
+            <input id="${index}" onclick="updateStatus(this)" type="checkbox" ${checked}>
+            <span class="${checked}">${todo.name}</span>
+            </input>
+        </label>
+        <button class="delete-btn" data-index="${index}" onclick="remove(this)">
+            <i class="fa fa-times"></i>
+        </button>
+    </li>
+    `;
+}
+
+function showTodos(){
+    if (todosJson.length ===0){
+        todosHtml.innerHTML='';
+        emptyImage.style.display='block';
+        quote.style.display='block';
+    } else {
+        todosHtml.innerHTML = todosJson.map(getTodoHtml).join('');
+        emptyImage.style.display='none';
+        quote.style.display='none';
+    }
+}
+
+function addTodo(todo){
+    input.value ="";
+    todosJson.unshift({name: todo, status:"pending"});
+    localStorage.setItem("todos", JSON.stringify(todosJson))
+    showTodos();
+}
+
+input.addEventListener("keyup", e =>{
+    let todo = input.value.trim();
+    if (!todo || e.key != "Enter"){
+        return;
+    }
+    addTodo(todo);
+})
+
+addButton.addEventListener("click",()=>{
+    let todo = input.value.trim();
+    if (!todo){
+        return;
+    }
+    addTodo(todo);
+})
+
