@@ -22,7 +22,7 @@ function getTodoHtml(todo, index) {
     `;
 }
 
-function showTodos() {
+function showTodos() { 
     if (todosJson.length === 0) {
         todosHtml.innerHTML = '';
         emptyImage.style.display = 'block';
@@ -58,22 +58,21 @@ addButton.addEventListener("click", () => {
 });
 
 function updateStatus(todo) {
-    let index = todo.id;
-    let todoName = todo.parentElement.lastElement;
-    if (todo.checked) {          
-        console.log(todoName);
+    let todoName = todo.parentElement.lastElementChild;
+    if (todo.checked) {         
         todoName.classList.add("checked");
-        todosJson[index].status = "completed";
+        todosJson[todo.id].status = "completed";
     } else {
         todoName.classList.remove("checked");
-        todosJson[index].status = "pending";
+        todosJson[todo.id].status = "pending";
     }
     localStorage.setItem("todos", JSON.stringify(todosJson));
 }
 
 function remove(todo) {
     const index = todo.dataset.index;
-    todosJson.splice(index, 1);
-    showTodos();
+    todosJson.splice(index, 1); 
+    showTodos();     
     localStorage.setItem("todos", JSON.stringify(todosJson));
+
 }
