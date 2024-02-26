@@ -4,7 +4,8 @@ const todosHtml = document.querySelector(".todos");
 const emptyImage = document.querySelector(".empty-image");
 const quote = document.querySelector(".quote-container");
 
-let todosJson = JSON.parse(localStorage.getItem("todos"))||[]
+
+let todosJson = JSON.parse(localStorage.getItem("todos")) || [];
 
 function getTodoHtml(todo, index) {
     let checked = todo.status === "completed" ? "checked" : "";
@@ -13,8 +14,7 @@ function getTodoHtml(todo, index) {
         <label for="${index}">
             <input id="${index}" onclick="updateStatus(this)" type="checkbox" ${checked}>
             <span class="${checked}">${todo.name}</span>
-            </input>
-        </label>
+        </label>      
         <button class="delete-btn" data-index="${index}" onclick="remove(this)">
             <i class="fa fa-times"></i>
         </button>
@@ -22,57 +22,58 @@ function getTodoHtml(todo, index) {
     `;
 }
 
-function showTodos(){
-    if (todosJson.length ===0){
-        todosHtml.innerHTML='';
-        emptyImage.style.display='block';
-        quote.style.display='block';
+function showTodos() {
+    if (todosJson.length === 0) {
+        todosHtml.innerHTML = '';
+        emptyImage.style.display = 'block';
+        quote.style.display = 'block';
     } else {
         todosHtml.innerHTML = todosJson.map(getTodoHtml).join('');
-        emptyImage.style.display='none';
-        quote.style.display='none';
+        emptyImage.style.display = 'none';
+        quote.style.display = 'none';
     }
 }
 
-function addTodo(todo){
-    input.value ="";
-    todosJson.unshift({name: todo, status:"pending"});
-    localStorage.setItem("todos", JSON.stringify(todosJson))
+function addTodo(todo) {
+    input.value = "";
+    todosJson.unshift({ name: todo, status: "pending" });
+    localStorage.setItem("todos", JSON.stringify(todosJson));
     showTodos();
 }
 
-input.addEventListener("keyup", e =>{
+input.addEventListener("keyup", e => {
     let todo = input.value.trim();
-    if (!todo || e.key != "Enter"){
+    if (!todo || e.key !== "Enter") {
         return;
     }
     addTodo(todo);
-})
+});
 
-addButton.addEventListener("click",()=>{
+addButton.addEventListener("click", () => {
     let todo = input.value.trim();
-    if (!todo){
+    if (!todo) {
         return;
     }
     addTodo(todo);
-})
+});
 
-function updateStatus(todo){
+function updateStatus(todo) {
+    let index = todo.id;
     let todoName = todo.parentElement.lastElement;
-    if(todo.checked){
-        todo.Name.classList.add("checked");
-        todosJson[todo.id].status="completed";
+    if (todo.checked) {          
+        console.log(todoName);
+        todoName.classList.add("checked");
+        todosJson[index].status = "completed";
     } else {
         todoName.classList.remove("checked");
-        todosJson[todo.id].status="pending";
+        todosJson[index].status = "pending";
     }
-    localStorage.setItem("todo", JSON.stringify(todosJson));
+    localStorage.setItem("todos", JSON.stringify(todosJson));
 }
 
-function remove(todo){
+function remove(todo) {
     const index = todo.dataset.index;
-    todosJson.splice(index,1);
+    todosJson.splice(index, 1);
     showTodos();
-    localStorage.setItem("todos", JSON.stringify(todosJson))
+    localStorage.setItem("todos", JSON.stringify(todosJson));
 }
-
