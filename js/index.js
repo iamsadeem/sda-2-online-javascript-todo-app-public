@@ -57,3 +57,22 @@ addButton.addEventListener("click",()=>{
     addTodo(todo);
 })
 
+function updateStatus(todo){
+    let todoName = todo.parentElement.lastElement;
+    if(todo.checked){
+        todo.Name.classList.add("checked");
+        todosJson[todo.id].status="completed";
+    } else {
+        todoName.classList.remove("checked");
+        todosJson[todo.id].status="pending";
+    }
+    localStorage.setItem("todo", JSON.stringify(todosJson));
+}
+
+function remove(todo){
+    const index = todo.dataset.index;
+    todosJson.splice(index,1);
+    showTodos();
+    localStorage.setItem("todos", JSON.stringify(todosJson))
+}
+

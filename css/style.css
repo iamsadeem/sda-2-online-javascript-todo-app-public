@@ -22,11 +22,11 @@ body{
 
 .container{
     width: 500px;
-    height: 550px;
+    height: auto;
     padding: 30px;
     border: 1px solid #fff;
     border-radius: 10px;
-    background-color: rgba(36, 47, 56, 0.5) ;
+    background-color: rgba(18, 29, 37, 0.488);
 }
 
 .container h1{
@@ -121,3 +121,93 @@ body{
         border-right-color: transparent;
     }
 }
+
+.todo{
+    list-style: none;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color:rgba(65, 65, 65, 0.742);
+    color: #fff;
+    border-radius: 50px;
+    margin: 10px 0;
+    padding: 10px 12px;
+    font-size: 16px;
+}
+
+.todo:first-child{
+    margin-top: 0;
+}
+
+.todo:last-child{
+    margin-bottom: 0;    
+}
+
+.todo:hover{
+    background-color: rgba(158, 211, 178, 0.603);
+}
+
+.todo label{
+    cursor: pointer;
+    width: fit-content;
+    display: flex;
+    align-items: center;
+}
+
+.todo span{
+    padding-left: 20px;
+    position: relative;
+    cursor: pointer;
+}
+
+span::before{
+    content: "";
+    height: 20px;
+    width: 20px;
+    position: absolute;
+    margin-left: -30px;
+    border-radius: 100px;
+    border: 1px solid #fff;
+}
+
+input[type='checkbox']{
+    visibility: hidden;
+}
+
+input:checked+span{
+    text-decoration: line-through;
+}
+
+.todo:hover input:checked+span::before, input:checked+span::before{
+    background-color: #fff;
+}
+
+.todo .delete-btn{
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    color: rgba(255, 255, 255, 0.622);
+    font-size: 25px;
+}
+
+.todo .delete-btn:hover{
+    color: rgba(215, 124, 124, 0.726)
+}
+
+.todo-container{
+    height: 400px;
+    overflow: overlay;
+}
+
+.todo-container::-webkit-scrollbar{
+    width: 0;
+}
+
+.todo-container:hover::-webkit-scrollbar-track{
+    width: 7px;
+}
+
+
+
+
+
