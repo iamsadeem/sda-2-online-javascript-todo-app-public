@@ -7,6 +7,7 @@ const counter = document.querySelector(".counter");
 
 
 let todosJson = JSON.parse(localStorage.getItem("todos")) || [];
+showTodos();
 
 function getTodoHtml(todo, index) {
     let checked = todo.status === "completed" ? "checked" : "";
