@@ -3,6 +3,7 @@ const addButton = document.querySelector(".add-button");
 const todosHtml = document.querySelector(".todos");
 const emptyImage = document.querySelector(".empty-image");
 const quote = document.querySelector(".quote-container");
+const counter = document.querySelector(".counter");
 
 
 let todosJson = JSON.parse(localStorage.getItem("todos")) || [];
@@ -19,7 +20,7 @@ function getTodoHtml(todo, index) {
         <i class='bx bxs-pencil'></i>
         </button> 
         <button class="delete-btn" data-index="${index}" onclick="remove(this)">
-            <i class="fa fa-times"></i>
+        <i class="fa fa-times"></i>
         </button>
     </li>
     `;
@@ -35,6 +36,7 @@ function showTodos() {
         emptyImage.style.display = 'none';
         quote.style.display = 'none';
     }
+    counter.textContent = todosJson.length;
 }
 
 function addTodo(todo) {
@@ -82,6 +84,7 @@ function remove(todo) {
 
 function edit(todo) {
     const index = todo.dataset.index;  
+    const saveTaskContent = todosJson[index].name;
     let editedTodo = prompt('Enter edited task:', todosJson[index].name);
     if (editedTodo !== "") { 
         todosJson[index].name = editedTodo;
@@ -90,6 +93,12 @@ function edit(todo) {
     } else {
         alert("Please enter a valid task.");
         edit(todo);
+    } 
+    
+    if (editedTodo == null) {
+        todosJson[index].name = saveTaskContent;
+        showTodos();
+        localStorage.setItem("todos", JSON.stringify(todosJson)); 
     }
 }
 
