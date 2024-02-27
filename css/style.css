@@ -33,7 +33,8 @@ body{
 .container h1{
     color: #fff;
     text-align: left;
-    margin-bottom: 20px;
+    margin-bottom: 20px;    
+    margin-left: 13px;
 }
 
 .input-container{
@@ -49,7 +50,7 @@ body{
     border-radius: 50px;  
     border: 0;  
     background-color: rgba(251, 253, 255, 0.882);
-    font-size: inherit;
+    font-size: inherit;    
     margin-right: 20px;
 }
 
@@ -197,6 +198,22 @@ input:checked+span{
     color: rgba(215, 124, 124, 0.726)
 }
 
+.todo .edit-btn{
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    color: rgba(255, 255, 255, 0.622);
+    font-size: 22px;
+    position: absolute;
+    top: 50%; 
+    transform: translateY(-50%);
+    right: 40px;
+    margin-top: 2px;
+}
+
+.todo .edit-btn:hover{
+    color: rgba(255, 203, 99, 0.833)
+}
 
 .todo-container{
     height: 400px;

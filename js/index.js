@@ -14,7 +14,10 @@ function getTodoHtml(todo, index) {
         <label for="${index}">
             <input id="${index}" onclick="updateStatus(this)" type="checkbox" ${checked}>
             <span class="${checked}">${todo.name}</span>
-        </label>      
+        </label>     
+        <button class="edit-btn" data-index="${index}" onclick="edit(this)">
+        <i class='bx bxs-pencil'></i>
+        </button> 
         <button class="delete-btn" data-index="${index}" onclick="remove(this)">
             <i class="fa fa-times"></i>
         </button>
@@ -76,3 +79,16 @@ function remove(todo) {
     localStorage.setItem("todos", JSON.stringify(todosJson));
 
 }
+
+function edit(todo) {
+    const index = todo.dataset.index;  
+    let editedTodo = prompt('Enter edited task:', todosJson[index].name);
+    if (editedTodo !== "") { 
+        todosJson[index].name = editedTodo;
+        showTodos();
+        localStorage.setItem("todos", JSON.stringify(todosJson)); 
+    } else {
+        alert("Please enter a valid task.");
+    }
+}
+
