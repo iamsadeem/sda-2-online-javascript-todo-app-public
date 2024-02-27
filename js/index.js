@@ -89,6 +89,7 @@ function edit(todo) {
         localStorage.setItem("todos", JSON.stringify(todosJson)); 
     } else {
         alert("Please enter a valid task.");
+        edit(todo);
     }
 }
 
