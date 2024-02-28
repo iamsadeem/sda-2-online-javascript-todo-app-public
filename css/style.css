@@ -52,6 +52,7 @@ body{
     background-color: rgba(251, 253, 255, 0.882);
     font-size: inherit;    
     margin-right: 20px;
+    margin-left: 2px;
 }
 
 .todo-input:hover{
