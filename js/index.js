@@ -38,6 +38,18 @@ function showTodos() {
         quote.style.display = 'none';
     }
     counter.textContent = todosJson.length;
+    
+    //persist task status even after the browser is closed
+    todosJson.forEach((todo, index) => {
+        let checkbox = document.getElementById(index);
+        if (todo.status === "completed") {
+            checkbox.checked = true;
+            checkbox.parentElement.lastElementChild.classList.add("checked");
+        } else {
+            checkbox.checked = false;
+            checkbox.parentElement.lastElementChild.classList.remove("checked");
+        }
+    });
 }
 
 function addTodo(todo) {
