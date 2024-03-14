@@ -97,21 +97,39 @@ function remove(todo) {
 
 function edit(todo) {
     const index = todo.dataset.index;  
+    const todoItem = todo.parentElement.querySelector('span');
     const saveTaskContent = todosJson[index].name;
-    let editedTodo = prompt('Enter edited task:', todosJson[index].name);
-    if (editedTodo !== "") { 
-        todosJson[index].name = editedTodo;
-        showTodos();
-        localStorage.setItem("todos", JSON.stringify(todosJson)); 
-    } else {
-        alert("Please enter a valid task.");
-        edit(todo);
-    } 
     
-    if (editedTodo == null) {
-        todosJson[index].name = saveTaskContent;
-        showTodos();
-        localStorage.setItem("todos", JSON.stringify(todosJson)); 
-    }
+    const inputField = document.createElement('input');
+    inputField.type = 'text';
+    inputField.value = todosJson[index].name;
+    
+    inputField.style.width = '320px'; 
+    inputField.style.background = 'transparent'; 
+    inputField.style.border = 'none'; 
+    inputField.style.color = 'white'; 
+    inputField.maxLength = 50; 
+    
+    todoItem.innerHTML = ''; 
+    todoItem.appendChild(inputField);
+    
+    inputField.focus();
+    
+    inputField.addEventListener('blur', () => {
+        const editedTodo = inputField.value.trim();
+        if (editedTodo !== "") { 
+            todosJson[index].name = editedTodo;
+            showTodos();
+            localStorage.setItem("todos", JSON.stringify(todosJson)); 
+        } else {
+            alert("Please enter a valid task.");
+            inputField.focus(); 
+        } 
+    });
+    
+    inputField.addEventListener('keyup', (event) => {
+        if (event.key === 'Enter') {
+            inputField.blur(); 
+        }
+    });
 }
-

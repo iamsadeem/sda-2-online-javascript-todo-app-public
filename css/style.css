@@ -64,9 +64,9 @@ body{
     border:none;
     outline: none;
     background:rgba(255, 255, 255, 0.622);
-    font-size: 35px;
+    font-size: 36px;
     cursor: pointer;
-    border-radius: 40px;
+    border-radius: 50px;
     width: 40px;
     height: 40px;
     margin-right: 3px;
@@ -198,7 +198,7 @@ input:checked+span{
 }
 
 .todo .delete-btn:hover{
-    color: rgba(215, 124, 124, 0.726)
+    color: rgba(255, 163, 163, 0.726)
 }
 
 .todo .edit-btn{
@@ -215,7 +215,7 @@ input:checked+span{
 }
 
 .todo .edit-btn:hover{
-    color: rgba(255, 203, 99, 0.833)
+    color: rgba(255, 223, 159, 0.833)
 }
 
 .todo-container{
